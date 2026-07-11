@@ -247,9 +247,7 @@
                 </div>
               </div>
 
-              <h2 class="subtitle is-4 has-text-centered">
-                <strong>Action interfaces shape how pretrained VLMs learn to act.</strong>
-              </h2>
+
             </div>
           </div>
         </div>
@@ -257,9 +255,13 @@
     </section>
 
     <section class="hero teaser" id="video">
+      <h2 class="subtitle is-4 has-text-centered">
+        <strong>Action interfaces shape how pretrained VLMs learn to act.</strong>
+      </h2>
       <div class="container is-max-desktop">
         <div class="hero-body">
-          <video id="main-video" controls muted playsinline preload="metadata" width="100%">
+          <video id="main-video" controls muted playsinline preload="metadata"
+            poster="static/images/main_video_poster.png" width="100%">
             <source src="static/videos/main_video.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -270,7 +272,7 @@
     <section class="section hero is-light" id="abstract">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
+          <div class="column">
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
@@ -301,224 +303,547 @@
       </div>
     </section>
 
-    <section class="section" id="key-idea">
+    <!-- =======================================================
+         Methodology
+    ======================================================== -->
+    <section class="section" id="methodology">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column">
-            <h2 class="title is-3">Key Idea</h2>
+            <h2 class="title is-3">Methodology</h2>
             <p class="subtitle is-5">
-              Direct fusion and Action QFormer share the same inherited multimodal pathway and downstream policy
-              objective, but differ in both forward organization and backward action-loss routing.
+              We compare a common direct-fusion VLA interface with Action QFormer,
+              which introduces instruction-conditioned learnable queries before
+              downstream action prediction.
             </p>
+          </div>
+        </div>
+
+        <!-- Direct-Fusion Baseline -->
+        <div class="columns is-vcentered methodology-row">
+          <div class="column is-two-fifths">
+            <figure class="image methodology-figure">
+              <img src="static/images/baseline.png" alt="Direct-fusion baseline architecture" loading="lazy">
+            </figure>
+          </div>
+
+          <div class="column">
+            <div class="content">
+              <h3 class="title is-4">Direct-Fusion (baseline)</h3>
+
+              <p>
+                Mainstream VLA systems commonly fuse inherited image-side and
+                instruction-side representations into an action-facing representation
+                before downstream action prediction.
+              </p>
+
+              <p>
+                We use this direct-fusion pattern as a diagnostic abstraction for
+                studying how action supervision acts on inherited multimodal
+                representations.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Action QFormer -->
+        <div class="columns is-vcentered methodology-row">
+          <div class="column is-two-fifths">
+            <figure class="image methodology-figure">
+              <img src="static/images/action_qformer.png" alt="Action QFormer architecture" loading="lazy">
+            </figure>
+          </div>
+
+          <div class="column">
+            <div class="content">
+              <h3 class="title is-4">Action QFormer (proposed)</h3>
+
+              <p>
+                Action QFormer replaces direct fusion with an
+                instruction-conditioned query interface.
+              </p>
+
+              <p>
+                Learnable queries first absorb instruction context and then
+                selectively extract visual evidence through cross-attention.
+                The resulting query outputs are combined with the instruction-side
+                representation to form an action-facing representation for downstream
+                policy prediction.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         Results
+    ======================================================== -->
+    <section class="section hero is-light" id="results">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">Results</h2>
+            <p class="subtitle is-5">
+              Action QFormer improves both full closed-loop navigation and
+              controlled instruction-conditioned action generation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Headline Metrics -->
+        <div class="columns is-centered has-text-centered mt-5">
+          <div class="column">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-3">18.8% → 56.3%</p>
+                <p>Average closed-loop task success</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-3">22.5% → 75.5%</p>
+                <p>Fixed-instruction action correctness</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="card">
+              <div class="card-content">
+                <p class="title is-3">≈ 0%</p>
+                <p>Instruction OOD with Action QFormer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="card mt-6">
+          <div class="card-content">
+            <h3 class="title is-4 has-text-centered">
+              Zero-Shot Sim-to-Real Closed-Loop Navigation
+            </h3>
+
+            <p class="has-text-centered mb-5">
+              Full perception-to-instruction-to-action evaluation across four real-world scenes.
+            </p>
+
+            <div class="table-container">
+              <table class="table is-fullwidth is-hoverable is-bordered">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Model</th>
+                    <th rowspan="2">Scenario</th>
+                    <th colspan="5" class="has-text-centered">
+                      Without Provided Instructions
+                    </th>
+                    <th colspan="2" class="has-text-centered">
+                      Given Instructions
+                    </th>
+                  </tr>
+
+                  <tr>
+                    <th class="has-text-centered">
+                      Instruction<br>Direction ↑
+                    </th>
+                    <th class="has-text-centered">
+                      Instruction<br>OOD ↓
+                    </th>
+                    <th class="has-text-centered">
+                      Action<br>Direction ↑
+                    </th>
+                    <th class="has-text-centered">
+                      Collisions ↓
+                    </th>
+                    <th class="has-text-centered">
+                      Success ↑
+                    </th>
+                    <th class="has-text-centered">
+                      Collisions ↓
+                    </th>
+                    <th class="has-text-centered">
+                      Success ↑
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td rowspan="4"><strong>Direct Fusion</strong></td>
+                    <td>Fridge</td>
+                    <td class="has-text-centered">80.3%</td>
+                    <td class="has-text-centered">100.0%</td>
+                    <td class="has-text-centered">65.6%</td>
+                    <td class="has-text-centered">0.50</td>
+                    <td class="has-text-centered">25.0%</td>
+                    <td class="has-text-centered">0.25</td>
+                    <td class="has-text-centered">75.0%</td>
+                  </tr>
+
+                  <tr>
+                    <td>Door</td>
+                    <td class="has-text-centered">75.0%</td>
+                    <td class="has-text-centered">97.2%</td>
+                    <td class="has-text-centered">72.2%</td>
+                    <td class="has-text-centered">1.75</td>
+                    <td class="has-text-centered">25.0%</td>
+                    <td class="has-text-centered">1.75</td>
+                    <td class="has-text-centered">87.5%</td>
+                  </tr>
+
+                  <tr>
+                    <td>Chair</td>
+                    <td class="has-text-centered">46.4%</td>
+                    <td class="has-text-centered">100.0%</td>
+                    <td class="has-text-centered">53.6%</td>
+                    <td class="has-text-centered">0.62</td>
+                    <td class="has-text-centered">25.0%</td>
+                    <td class="has-text-centered">0.75</td>
+                    <td class="has-text-centered">25.0%</td>
+                  </tr>
+
+                  <tr>
+                    <td>Table</td>
+                    <td class="has-text-centered">22.9%</td>
+                    <td class="has-text-centered">100.0%</td>
+                    <td class="has-text-centered">16.7%</td>
+                    <td class="has-text-centered">0.75</td>
+                    <td class="has-text-centered">0.0%</td>
+                    <td class="has-text-centered">0.62</td>
+                    <td class="has-text-centered">25.0%</td>
+                  </tr>
+
+                  <tr class="is-selected">
+                    <td rowspan="4"><strong>Action QFormer</strong></td>
+                    <td>Fridge</td>
+                    <td class="has-text-centered">95.9%</td>
+                    <td class="has-text-centered"><strong>0.0%</strong></td>
+                    <td class="has-text-centered">93.2%</td>
+                    <td class="has-text-centered">0.62</td>
+                    <td class="has-text-centered"><strong>37.5%</strong></td>
+                    <td class="has-text-centered">0.00</td>
+                    <td class="has-text-centered"><strong>100.0%</strong></td>
+                  </tr>
+
+                  <tr class="is-selected">
+                    <td>Door</td>
+                    <td class="has-text-centered">97.6%</td>
+                    <td class="has-text-centered"><strong>0.0%</strong></td>
+                    <td class="has-text-centered">90.5%</td>
+                    <td class="has-text-centered">1.50</td>
+                    <td class="has-text-centered"><strong>62.5%</strong></td>
+                    <td class="has-text-centered">0.38</td>
+                    <td class="has-text-centered"><strong>87.5%</strong></td>
+                  </tr>
+
+                  <tr class="is-selected">
+                    <td>Chair</td>
+                    <td class="has-text-centered">58.8%</td>
+                    <td class="has-text-centered"><strong>0.0%</strong></td>
+                    <td class="has-text-centered">82.4%</td>
+                    <td class="has-text-centered">0.50</td>
+                    <td class="has-text-centered"><strong>62.5%</strong></td>
+                    <td class="has-text-centered">0.12</td>
+                    <td class="has-text-centered"><strong>87.5%</strong></td>
+                  </tr>
+
+                  <tr class="is-selected">
+                    <td>Table</td>
+                    <td class="has-text-centered">100.0%</td>
+                    <td class="has-text-centered"><strong>0.0%</strong></td>
+                    <td class="has-text-centered">93.0%</td>
+                    <td class="has-text-centered">0.38</td>
+                    <td class="has-text-centered"><strong>62.5%</strong></td>
+                    <td class="has-text-centered">0.12</td>
+                    <td class="has-text-centered"><strong>87.5%</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p class="has-text-centered mt-4">
+              The full table separates instruction instability from downstream
+              action-generation errors and final closed-loop outcomes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Controlled Action Generation -->
+        <div class="columns is-vcentered mt-6">
+          <div class="column is-one-third">
+            <div class="content">
+              <h3 class="title is-4">
+                Where Does Action QFormer Help Most?
+              </h3>
+
+              <p>
+                The improvement is strongest when action generation depends on
+                grounded directional disambiguation.
+                It remains substantial for object grounding, while the gap is
+                smaller for generic motion-template instructions.
+              </p>
+            </div>
+          </div>
+
+          <div class="column">
+            <figure class="image">
+              <img src="static/images/action_generation.png"
+                alt="Fixed-instruction action generation across scenario families" loading="lazy">
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         Representation-Shaping Mechanism
+    ======================================================== -->
+    <section class="section" id="mechanism">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered  has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">
+              Representation-Shaping Mechanism
+            </h2>
+          </div>
+        </div>
+
+        <!-- Main Mechanism Figure -->
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content">
+              <h3 class="title is-4">
+                Forward Organization and Backward Shaping
+              </h3>
+
+              <p>
+              Direct fusion and Action QFormer share the same inherited
+              multimodal pathway and downstream action objective, but differ
+              in both forward organization and backward action-loss routing.
+            </p>
+        </div>
+
             <figure class="image">
               <img src="static/images/main_figure.png"
                 alt="Direct versus structured action-loss shaping in Action QFormer" loading="lazy">
             </figure>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section hero is-light" id="behavior">
-      <div class="container is-max-desktop">
-        <div class="has-text-centered mb-6">
-          <h2 class="title is-3">Representative Real-World Behavior</h2>
-          <p class="subtitle is-5">
-            The sharp-turn scene exposes both full closed-loop instability and the remaining action-generation gap after
-            instruction generation is controlled.
-          </p>
-        </div>
+        <!-- Mechanism Animation -->
+        <div class="columns is-centered mt-6">
+          <div class="column is-four-fifths">
+            <div class="content">
+              <h3 class="title is-4">
+                Mechanism Animation
+              </h3>
 
-        <div class="columns is-variable is-6">
-          <div class="column">
-            <div class="card">
-              <div class="card-content">
-                <h3 class="title is-4">Closed-loop Navigation</h3>
-                <p class="mb-4"><strong>Instruction generation → navigation execution</strong></p>
-                <video controls muted playsinline preload="metadata" width="100%">
-                  <source src="static/videos/sharp_turn_closed_loop.mp4" type="video/mp4">
-                </video>
-              </div>
+              <p>
+                The animation illustrates how Action QFormer changes both the
+                organization of multimodal information during the forward pass
+                and the route through which action supervision propagates
+                during training.
+              </p>
             </div>
-          </div>
 
-          <div class="column">
-            <div class="card">
-              <div class="card-content">
-                <h3 class="title is-4">Controlled Action Generation</h3>
-                <p class="mb-4"><strong>Given instruction: “Make a sharp left turn.”</strong></p>
-                <video controls muted playsinline preload="metadata" width="100%">
-                  <source src="static/videos/sharp_turn_controlled.mp4" type="video/mp4">
-                </video>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="columns is-centered has-text-centered mt-6">
-          <div class="column">
-            <p class="title is-3">18.8% → 56.3%</p>
-            <p>Closed-loop task success</p>
-          </div>
-          <div class="column">
-            <p class="title is-3">22.5% → 75.5%</p>
-            <p>Fixed-instruction correctness</p>
-          </div>
-          <div class="column">
-            <p class="title is-3">≈ 0%</p>
-            <p>Instruction OOD with Action QFormer</p>
+            <video id="mechanism-video" controls muted playsinline preload="metadata"
+              poster="static/images/mechanism_video_poster.png" width="100%">
+              <source src="static/videos/mechanism_animation.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="mechanism">
-      <div class="container is-max-desktop">
-        <div class="has-text-centered mb-6">
-          <h2 class="title is-3">How It Works</h2>
-          <p class="subtitle is-5">The difference lies beyond the forward pass.</p>
-        </div>
-
-        <div class="columns is-variable is-6">
-          <div class="column">
-            <h3 class="title is-4 has-text-centered">Forward Organization</h3>
-            <figure class="image">
-              <img src="static/images/forward_mechanism.png"
-                alt="Direct fusion versus query-organized forward computation" loading="lazy">
-            </figure>
-            <div class="content mt-4">
-              <p><strong>Direct fusion</strong> directly combines inherited image-side and instruction-side
-                representations before action generation.</p>
-              <p><strong>Action QFormer</strong> uses instruction-conditioned queries to reorganize inherited multimodal
-                information before action prediction.</p>
-            </div>
-          </div>
-
-          <div class="column">
-            <h3 class="title is-4 has-text-centered">Backward Shaping</h3>
-            <figure class="image">
-              <img src="static/images/backward_mechanism.png"
-                alt="Direct versus query-mediated action-loss backpropagation" loading="lazy">
-            </figure>
-            <div class="content mt-4">
-              <p><strong>Direct shaping</strong> lets action-loss gradients act more broadly on the inherited multimodal
-                pathway.</p>
-              <p><strong>Structured shaping</strong> provides an intermediate query-specific adaptation path before
-                gradients propagate upstream.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="has-text-centered mt-5">
-          <a class="button is-dark is-rounded" href="static/videos/mechanism_animation.mp4" target="_blank">
-            <span class="icon"><i class="fas fa-play"></i></span>
-            <span>Watch the mechanism animation</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
+    <!-- =======================================================
+         Mechanistic Findings
+    ======================================================== -->
     <section class="section hero is-light" id="analysis">
       <div class="container is-max-desktop">
-        <div class="has-text-centered mb-6">
-          <h2 class="title is-3">Mechanistic Findings</h2>
-          <p class="subtitle is-5">Three analyses consistently show that Action QFormer makes action-supervised
-            adaptation more controlled and action-facing.</p>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">Mechanistic Findings</h2>
+            <p class="subtitle is-5">
+              Three complementary analyses show that Action QFormer makes
+              action-supervised adaptation more controlled and more
+              action-facing.
+            </p>
+          </div>
         </div>
 
-        <div class="columns is-variable is-5">
-          <div class="column">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image">
-                  <img src="static/images/directional_distinction.png" alt="Left-right directional distinction analysis"
-                    loading="lazy">
-                </figure>
-              </div>
-              <div class="card-content">
-                <h3 class="title is-5">Clearer Directional Distinction</h3>
-                <p>Action QFormer forms a much clearer left-right distinction in the action-facing representation.</p>
-              </div>
+        <!-- Finding 1 -->
+        <div class="columns is-vcentered mt-6">
+          <div class="column is-two-fifths">
+            <div class="content">
+              <h3 class="title is-4">
+                Clearer Action-Facing Directional Distinction
+              </h3>
+
+              <p>
+                Action QFormer forms a substantially clearer left–right
+                distinction in the action-facing representation, while the
+                corresponding changes in upstream image-side and
+                instruction-side representations remain much smaller.
+              </p>
             </div>
           </div>
 
           <div class="column">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image">
-                  <img src="static/images/token_rewriting.png" alt="Upstream token rewriting analysis" loading="lazy">
-                </figure>
-              </div>
-              <div class="card-content">
-                <h3 class="title is-5">Less Broad Upstream Rewriting</h3>
-                <p>It reduces widespread token rewriting while preserving targeted adaptation on key control and spatial
-                  tokens.</p>
-              </div>
+            <figure class="image">
+              <img src="static/images/directional_distinction.png" alt="Left-right directional distinction analysis"
+                loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Finding 2 -->
+        <div class="columns is-vcentered mt-6">
+          <div class="column">
+            <figure class="image">
+              <img src="static/images/token_rewriting.png" alt="Upstream token rewriting analysis" loading="lazy">
+            </figure>
+          </div>
+
+          <div class="column is-two-fifths">
+            <div class="content">
+              <h3 class="title is-4">
+                Reduced Upstream Rewriting
+              </h3>
+
+              <p>
+                Action QFormer reduces broad upstream token rewriting while
+                preserving targeted adaptation on selected control-relevant
+                tokens such as directional and motion expressions.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Finding 3 -->
+        <div class="columns is-vcentered mt-6">
+          <div class="column is-two-fifths">
+            <div class="content">
+              <h3 class="title is-4">
+                More Stable Instruction-to-Visual Attention
+              </h3>
+
+              <p>
+                Under action-loss exposure, Action QFormer produces fewer
+                high-risk attention shifts and preserves more stable visual
+                grounding relative to the corresponding action-update-blocked
+                reference.
+              </p>
             </div>
           </div>
 
           <div class="column">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image">
-                  <img src="static/images/attention_stability.png"
-                    alt="Instruction-to-visual attention stability analysis" loading="lazy">
-                </figure>
-              </div>
-              <div class="card-content">
-                <h3 class="title is-5">More Stable Visual Routing</h3>
-                <p>It produces fewer high-risk instruction-to-visual attention shifts under action-loss exposure.</p>
-              </div>
-            </div>
+            <figure class="image">
+              <img src="static/images/attention_stability.png" alt="Instruction-to-visual attention stability analysis"
+                loading="lazy">
+            </figure>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Finding 4 -->
+        <div class="columns is-vcentered mt-6">
+          <div class="column">
+            <figure class="image">
+              <img src="static/images/attention_focus.png" alt="Constructive visual grounding analysis" loading="lazy">
+            </figure>
+          </div>
+
+          <div class="column is-half">
+            <div class="content">
+              <h3 class="title is-4">
+                Constructive Visual Grounding
+              </h3>
+
+              <p>
+                Beyond preserving attention stability, Action QFormer can also
+                sharpen instruction-to-visual attention toward task-relevant
+                visual evidence. The example below illustrates this qualitative
+                focus effect for the instruction
+                <em>“move towards the staircase.”</em>
+              </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- =======================================================
+         Cross-Scene Generalization
+    ======================================================== -->
     <section class="section" id="cross-scene">
       <div class="container">
-        <div class="has-text-centered mb-6">
-          <h2 class="title is-3">Cross-scene Generalization</h2>
-          <p class="subtitle is-5">Action QFormer consistently improves navigation across diverse real-world scenes.</p>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">Cross-Scene Generalization</h2>
+            <p class="subtitle is-5">
+              Action QFormer consistently improves navigation across diverse
+              real-world scenes.
+            </p>
+          </div>
         </div>
 
-        <div class="columns is-multiline">
+        <div class="columns is-multiline mt-5">
           <div class="column is-half">
             <div class="card">
               <div class="card-content">
                 <h3 class="title is-5">Find the Fridge</h3>
                 <video controls muted playsinline preload="metadata" width="100%">
                   <source src="static/videos/cross_scene_fridge.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
                 </video>
               </div>
             </div>
           </div>
+
           <div class="column is-half">
             <div class="card">
               <div class="card-content">
                 <h3 class="title is-5">Find the Door</h3>
                 <video controls muted playsinline preload="metadata" width="100%">
                   <source src="static/videos/cross_scene_door.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
                 </video>
               </div>
             </div>
           </div>
+
           <div class="column is-half">
             <div class="card">
               <div class="card-content">
                 <h3 class="title is-5">Find the Chair</h3>
                 <video controls muted playsinline preload="metadata" width="100%">
                   <source src="static/videos/cross_scene_chair.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
                 </video>
               </div>
             </div>
           </div>
+
           <div class="column is-half">
             <div class="card">
               <div class="card-content">
                 <h3 class="title is-5">Find the Table</h3>
                 <video controls muted playsinline preload="metadata" width="100%">
                   <source src="static/videos/cross_scene_table.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
                 </video>
               </div>
             </div>
