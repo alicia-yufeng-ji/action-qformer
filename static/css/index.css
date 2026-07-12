@@ -1401,3 +1401,25 @@ a:focus,
       none !important;
   }
 }
+
+/* =========================================================
+   Acknowledgement Card
+   ========================================================= */
+
+#BibTeX .acknowledgement-card {
+  display: block;
+  width: 100%;
+  margin: 3rem 0 0 !important;
+
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  background: var(--background-primary);
+  box-shadow: var(--shadow-md);
+}
+
+#BibTeX .acknowledgement-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
