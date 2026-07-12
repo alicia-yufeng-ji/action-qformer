@@ -379,239 +379,14 @@
     </section>
 
     <!-- =======================================================
-         Results
+         Mechanism
     ======================================================== -->
-    <section class="section hero is-light" id="results">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered has-text-centered">
-          <div class="column">
-            <h2 class="title is-3">Results</h2>
-            <p class="subtitle is-5">
-              Action QFormer improves both full closed-loop navigation and
-              controlled instruction-conditioned action generation.
-            </p>
-          </div>
-        </div>
-
-        <!-- Headline Metrics -->
-        <div class="columns is-centered has-text-centered mt-5">
-          <div class="column">
-            <div class="card">
-              <div class="card-content">
-                <p class="title is-3">18.8% → 56.3%</p>
-                <p>Average closed-loop task success</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="card">
-              <div class="card-content">
-                <p class="title is-3">22.5% → 75.5%</p>
-                <p>Fixed-instruction action correctness</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="card">
-              <div class="card-content">
-                <p class="title is-3">≈ 0%</p>
-                <p>Instruction OOD with Action QFormer</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-
-        <div class="card mt-6">
-          <div class="card-content">
-            <h3 class="title is-4 has-text-centered">
-              Zero-Shot Sim-to-Real Closed-Loop Navigation
-            </h3>
-
-            <p class="has-text-centered mb-5">
-              Full perception-to-instruction-to-action evaluation across four real-world scenes.
-            </p>
-
-            <div class="table-container">
-              <table class="table is-fullwidth is-hoverable is-bordered">
-                <thead>
-                  <tr>
-                    <th rowspan="2">Model</th>
-                    <th rowspan="2">Scenario</th>
-                    <th colspan="5" class="has-text-centered">
-                      Without Provided Instructions
-                    </th>
-                    <th colspan="2" class="has-text-centered">
-                      Given Instructions
-                    </th>
-                  </tr>
-
-                  <tr>
-                    <th class="has-text-centered">
-                      Instruction<br>Direction ↑
-                    </th>
-                    <th class="has-text-centered">
-                      Instruction<br>OOD ↓
-                    </th>
-                    <th class="has-text-centered">
-                      Action<br>Direction ↑
-                    </th>
-                    <th class="has-text-centered">
-                      Collisions ↓
-                    </th>
-                    <th class="has-text-centered">
-                      Success ↑
-                    </th>
-                    <th class="has-text-centered">
-                      Collisions ↓
-                    </th>
-                    <th class="has-text-centered">
-                      Success ↑
-                    </th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td rowspan="4"><strong>Direct Fusion</strong></td>
-                    <td>Fridge</td>
-                    <td class="has-text-centered">80.3%</td>
-                    <td class="has-text-centered">100.0%</td>
-                    <td class="has-text-centered">65.6%</td>
-                    <td class="has-text-centered">0.50</td>
-                    <td class="has-text-centered">25.0%</td>
-                    <td class="has-text-centered">0.25</td>
-                    <td class="has-text-centered">75.0%</td>
-                  </tr>
-
-                  <tr>
-                    <td>Door</td>
-                    <td class="has-text-centered">75.0%</td>
-                    <td class="has-text-centered">97.2%</td>
-                    <td class="has-text-centered">72.2%</td>
-                    <td class="has-text-centered">1.75</td>
-                    <td class="has-text-centered">25.0%</td>
-                    <td class="has-text-centered">1.75</td>
-                    <td class="has-text-centered">87.5%</td>
-                  </tr>
-
-                  <tr>
-                    <td>Chair</td>
-                    <td class="has-text-centered">46.4%</td>
-                    <td class="has-text-centered">100.0%</td>
-                    <td class="has-text-centered">53.6%</td>
-                    <td class="has-text-centered">0.62</td>
-                    <td class="has-text-centered">25.0%</td>
-                    <td class="has-text-centered">0.75</td>
-                    <td class="has-text-centered">25.0%</td>
-                  </tr>
-
-                  <tr>
-                    <td>Table</td>
-                    <td class="has-text-centered">22.9%</td>
-                    <td class="has-text-centered">100.0%</td>
-                    <td class="has-text-centered">16.7%</td>
-                    <td class="has-text-centered">0.75</td>
-                    <td class="has-text-centered">0.0%</td>
-                    <td class="has-text-centered">0.62</td>
-                    <td class="has-text-centered">25.0%</td>
-                  </tr>
-
-                  <tr class="is-selected">
-                    <td rowspan="4"><strong>Action QFormer</strong></td>
-                    <td>Fridge</td>
-                    <td class="has-text-centered">95.9%</td>
-                    <td class="has-text-centered"><strong>0.0%</strong></td>
-                    <td class="has-text-centered">93.2%</td>
-                    <td class="has-text-centered">0.62</td>
-                    <td class="has-text-centered"><strong>37.5%</strong></td>
-                    <td class="has-text-centered">0.00</td>
-                    <td class="has-text-centered"><strong>100.0%</strong></td>
-                  </tr>
-
-                  <tr class="is-selected">
-                    <td>Door</td>
-                    <td class="has-text-centered">97.6%</td>
-                    <td class="has-text-centered"><strong>0.0%</strong></td>
-                    <td class="has-text-centered">90.5%</td>
-                    <td class="has-text-centered">1.50</td>
-                    <td class="has-text-centered"><strong>62.5%</strong></td>
-                    <td class="has-text-centered">0.38</td>
-                    <td class="has-text-centered"><strong>87.5%</strong></td>
-                  </tr>
-
-                  <tr class="is-selected">
-                    <td>Chair</td>
-                    <td class="has-text-centered">58.8%</td>
-                    <td class="has-text-centered"><strong>0.0%</strong></td>
-                    <td class="has-text-centered">82.4%</td>
-                    <td class="has-text-centered">0.50</td>
-                    <td class="has-text-centered"><strong>62.5%</strong></td>
-                    <td class="has-text-centered">0.12</td>
-                    <td class="has-text-centered"><strong>87.5%</strong></td>
-                  </tr>
-
-                  <tr class="is-selected">
-                    <td>Table</td>
-                    <td class="has-text-centered">100.0%</td>
-                    <td class="has-text-centered"><strong>0.0%</strong></td>
-                    <td class="has-text-centered">93.0%</td>
-                    <td class="has-text-centered">0.38</td>
-                    <td class="has-text-centered"><strong>62.5%</strong></td>
-                    <td class="has-text-centered">0.12</td>
-                    <td class="has-text-centered"><strong>87.5%</strong></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <p class="has-text-centered mt-4">
-              The full table separates instruction instability from downstream
-              action-generation errors and final closed-loop outcomes.
-            </p>
-          </div>
-        </div>
-
-        <!-- Controlled Action Generation -->
-        <div class="columns is-vcentered mt-6">
-          <div class="column is-one-third">
-            <div class="content">
-              <h3 class="title is-4">
-                Where Does Action QFormer Help Most?
-              </h3>
-
-              <p>
-                The improvement is strongest when action generation depends on
-                grounded directional disambiguation.
-                It remains substantial for object grounding, while the gap is
-                smaller for generic motion-template instructions.
-              </p>
-            </div>
-          </div>
-
-          <div class="column">
-            <figure class="image">
-              <img src="static/images/action_generation.png"
-                alt="Fixed-instruction action generation across scenario families" loading="lazy">
-            </figure>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================
-         Representation-Shaping Mechanism
-    ======================================================== -->
-    <section class="section" id="mechanism">
+    <section class="section hero is-light" id="mechanism">
       <div class="container is-max-desktop">
         <div class="columns is-centered  has-text-centered">
           <div class="column is-four-fifths">
             <h2 class="title is-3">
-              Representation-Shaping Mechanism
+              Mechanism
             </h2>
           </div>
         </div>
@@ -625,11 +400,11 @@
               </h3>
 
               <p>
-              Direct fusion and Action QFormer share the same inherited
-              multimodal pathway and downstream action objective, but differ
-              in both forward organization and backward action-loss routing.
-            </p>
-        </div>
+                Direct fusion and Action QFormer share the same inherited
+                multimodal pathway and downstream action objective, but differ
+                in both forward organization and backward action-loss routing.
+              </p>
+            </div>
 
             <figure class="image">
               <img src="static/images/main_figure.png"
@@ -667,7 +442,7 @@
     <!-- =======================================================
          Mechanistic Findings
     ======================================================== -->
-    <section class="section hero is-light" id="analysis">
+    <section class="section hero" id="analysis">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column">
@@ -780,71 +555,379 @@
                 focus effect for the instruction
                 <em>“move towards the staircase.”</em>
               </p>
+            </div>
           </div>
         </div>
-      </div>
     </section>
 
     <!-- =======================================================
-         Cross-Scene Generalization
+         Results
     ======================================================== -->
-    <section class="section" id="cross-scene">
-      <div class="container">
+    <section class="section hero is-light" id="results">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column">
-            <h2 class="title is-3">Cross-Scene Generalization</h2>
+            <h2 class="title is-3">Results</h2>
             <p class="subtitle is-5">
-              Action QFormer consistently improves navigation across diverse
-              real-world scenes.
+              Action QFormer improves both full closed-loop navigation and
+              controlled instruction-conditioned action generation.
             </p>
           </div>
         </div>
 
-        <div class="columns is-multiline mt-5">
-          <div class="column is-half">
+        <!-- Headline Metrics -->
+        <div class="columns is-centered has-text-centered mt-5">
+          <div class="column">
             <div class="card">
               <div class="card-content">
-                <h3 class="title is-5">Find the Fridge</h3>
-                <video controls muted playsinline preload="metadata" width="100%">
-                  <source src="static/videos/cross_scene_fridge.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <p class="title is-3">18.8% → 56.3%</p>
+                <p>Average closed-loop task success</p>
               </div>
             </div>
           </div>
 
-          <div class="column is-half">
+          <div class="column">
             <div class="card">
               <div class="card-content">
-                <h3 class="title is-5">Find the Door</h3>
-                <video controls muted playsinline preload="metadata" width="100%">
-                  <source src="static/videos/cross_scene_door.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <p class="title is-3">22.5% → 75.5%</p>
+                <p>Fixed-instruction action correctness</p>
               </div>
             </div>
           </div>
 
-          <div class="column is-half">
+          <div class="column">
             <div class="card">
               <div class="card-content">
-                <h3 class="title is-5">Find the Chair</h3>
-                <video controls muted playsinline preload="metadata" width="100%">
-                  <source src="static/videos/cross_scene_chair.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <p class="title is-3">≈ 0%</p>
+                <p>Instruction OOD with Action QFormer</p>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="column is-half">
-            <div class="card">
+        <!-- Cross-Scene Comparisons -->
+        <hr class="mt-6 mb-6">
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h3 class="title is-4">Cross-Scene Comparisons</h3>
+            <p class="subtitle is-5">
+              Across four real-world scenes, Action QFormer shows more stable
+              closed-loop behavior than the direct-fusion baseline.
+            </p>
+          </div>
+        </div>
+
+        <!-- Find the Fridge -->
+        <div class="mt-6">
+          <h4 class="title is-5 has-text-centered">Find the Fridge</h4>
+
+          <div class="columns is-variable is-5">
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Direct Fusion
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/fridge_baseline.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Action QFormer
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/fridge_action_qformer.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Find the Door -->
+        <div class="mt-6">
+          <h4 class="title is-5 has-text-centered">Find the Door</h4>
+
+          <div class="columns is-variable is-5">
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Direct Fusion
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/door_baseline.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Action QFormer
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/door_action_qformer.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Find the Chair -->
+        <div class="mt-6">
+          <h4 class="title is-5 has-text-centered">Find the Chair</h4>
+
+          <div class="columns is-variable is-5">
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Direct Fusion
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/chair_baseline.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Action QFormer
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/chair_action_qformer.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Find the Table -->
+        <div class="mt-6">
+          <h4 class="title is-5 has-text-centered">Find the Table</h4>
+
+          <div class="columns is-variable is-5">
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Direct Fusion
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/table_baseline.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+
+            <div class="column">
+              <div class="card">
+                <div class="card-content">
+                  <p class="has-text-centered has-text-weight-semibold mb-4">
+                    Action QFormer
+                  </p>
+
+                  <video controls muted playsinline preload="metadata" width="100%">
+                    <source src="static/videos/table_action_qformer.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="mt-6 mb-6">
+
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h3 class="title is-4">Detailed Evaluation</h3>
+            <p class="subtitle is-5">
+              The full table separates instruction instability from downstream
+              action-generation errors and final closed-loop outcomes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Full Results -->
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="card mt-6 results-table-card">
               <div class="card-content">
-                <h3 class="title is-5">Find the Table</h3>
-                <video controls muted playsinline preload="metadata" width="100%">
-                  <source src="static/videos/cross_scene_table.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
+                <h3 class="title is-4 has-text-centered">
+                  Zero-Shot Sim-to-Real Closed-Loop Navigation
+                </h3>
+
+                <p class="has-text-centered mb-5">
+                  Full perception-to-instruction-to-action evaluation across four real-world scenes.
+                </p>
+
+                <div class="table-container has-text-centered">
+                  <table class="table is-fullwidth is-hoverable results-table">
+                    <thead>
+                      <tr>
+                        <th rowspan="2">Model</th>
+                        <th rowspan="2">Scenario</th>
+                        <th colspan="5" class="has-text-centered">
+                          Without Provided Instructions
+                        </th>
+                        <th colspan="2" class="has-text-centered">
+                          Given Instructions
+                        </th>
+                      </tr>
+
+                      <tr>
+                        <th class="has-text-centered">
+                          Instruction<br>Direction ↑
+                        </th>
+                        <th class="has-text-centered">
+                          Instruction<br>OOD ↓
+                        </th>
+                        <th class="has-text-centered">
+                          Action<br>Direction ↑
+                        </th>
+                        <th class="has-text-centered">
+                          Collisions ↓
+                        </th>
+                        <th class="has-text-centered">
+                          Success ↑
+                        </th>
+                        <th class="has-text-centered">
+                          Collisions ↓
+                        </th>
+                        <th class="has-text-centered">
+                          Success ↑
+                        </th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr>
+                        <td rowspan="4"><strong>Direct Fusion</strong></td>
+                        <td>Fridge</td>
+                        <td class="has-text-centered">80.3%</td>
+                        <td class="has-text-centered">100.0%</td>
+                        <td class="has-text-centered">65.6%</td>
+                        <td class="has-text-centered">0.50</td>
+                        <td class="has-text-centered">25.0%</td>
+                        <td class="has-text-centered">0.25</td>
+                        <td class="has-text-centered">75.0%</td>
+                      </tr>
+
+                      <tr>
+                        <td>Door</td>
+                        <td class="has-text-centered">75.0%</td>
+                        <td class="has-text-centered">97.2%</td>
+                        <td class="has-text-centered">72.2%</td>
+                        <td class="has-text-centered">1.75</td>
+                        <td class="has-text-centered">25.0%</td>
+                        <td class="has-text-centered">1.75</td>
+                        <td class="has-text-centered">87.5%</td>
+                      </tr>
+
+                      <tr>
+                        <td>Chair</td>
+                        <td class="has-text-centered">46.4%</td>
+                        <td class="has-text-centered">100.0%</td>
+                        <td class="has-text-centered">53.6%</td>
+                        <td class="has-text-centered">0.62</td>
+                        <td class="has-text-centered">25.0%</td>
+                        <td class="has-text-centered">0.75</td>
+                        <td class="has-text-centered">25.0%</td>
+                      </tr>
+
+                      <tr>
+                        <td>Table</td>
+                        <td class="has-text-centered">22.9%</td>
+                        <td class="has-text-centered">100.0%</td>
+                        <td class="has-text-centered">16.7%</td>
+                        <td class="has-text-centered">0.75</td>
+                        <td class="has-text-centered">0.0%</td>
+                        <td class="has-text-centered">0.62</td>
+                        <td class="has-text-centered">25.0%</td>
+                      </tr>
+
+                      <tr>
+                        <td rowspan="4"><strong>Action QFormer</strong></td>
+                        <td>Fridge</td>
+                        <td class="has-text-centered">95.9%</td>
+                        <td class="has-text-centered"><strong>0.0%</strong></td>
+                        <td class="has-text-centered">93.2%</td>
+                        <td class="has-text-centered">0.62</td>
+                        <td class="has-text-centered"><strong>37.5%</strong></td>
+                        <td class="has-text-centered">0.00</td>
+                        <td class="has-text-centered"><strong>100.0%</strong></td>
+                      </tr>
+
+                      <tr>
+                        <td>Door</td>
+                        <td class="has-text-centered">97.6%</td>
+                        <td class="has-text-centered"><strong>0.0%</strong></td>
+                        <td class="has-text-centered">90.5%</td>
+                        <td class="has-text-centered">1.50</td>
+                        <td class="has-text-centered"><strong>62.5%</strong></td>
+                        <td class="has-text-centered">0.38</td>
+                        <td class="has-text-centered"><strong>87.5%</strong></td>
+                      </tr>
+
+                      <tr>
+                        <td>Chair</td>
+                        <td class="has-text-centered">58.8%</td>
+                        <td class="has-text-centered"><strong>0.0%</strong></td>
+                        <td class="has-text-centered">82.4%</td>
+                        <td class="has-text-centered">0.50</td>
+                        <td class="has-text-centered"><strong>62.5%</strong></td>
+                        <td class="has-text-centered">0.12</td>
+                        <td class="has-text-centered"><strong>87.5%</strong></td>
+                      </tr>
+
+                      <tr>
+                        <td>Table</td>
+                        <td class="has-text-centered">100.0%</td>
+                        <td class="has-text-centered"><strong>0.0%</strong></td>
+                        <td class="has-text-centered">93.0%</td>
+                        <td class="has-text-centered">0.38</td>
+                        <td class="has-text-centered"><strong>62.5%</strong></td>
+                        <td class="has-text-centered">0.12</td>
+                        <td class="has-text-centered"><strong>87.5%</strong></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <p class="has-text-centered mt-4">
+                  The full table separates instruction instability from downstream
+                  action-generation errors and final closed-loop outcomes.
+                </p>
               </div>
             </div>
           </div>
@@ -852,7 +935,7 @@
       </div>
     </section>
 
-    <section class="section hero is-light" id="BibTeX">
+    <section class="section" id="BibTeX">
       <div class="container is-max-desktop content">
         <div class="bibtex-header">
           <h2 class="title">BibTeX</h2>

@@ -805,3 +805,14 @@ a:focus {
     box-shadow: var(--shadow-md);
   }
 }
+
+/* =========================================================
+    Results Table Styling
+    ========================================================= */
+
+/* Make up the border of the last row in the results table*/
+.results-table tbody tr:last-child td {
+
+  border-bottom: 1px solid #dbdbdb;
+
+}
