@@ -304,17 +304,17 @@
     </section>
 
     <!-- =======================================================
-         Methodology
+         Action Interface Design
     ======================================================== -->
-    <section class="section" id="methodology">
+    <section class="section" id="action-interface-design">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered section-heading">
           <div class="column">
-            <h2 class="title is-3">Methodology</h2>
+            <h2 class="title is-3">Action Interface Design</h2>
             <p class="subtitle is-5">
               We compare a common direct-fusion VLA interface with Action QFormer,
               which introduces instruction-conditioned learnable queries before
-              downstream action prediction.
+              action prediction.
             </p>
           </div>
         </div>
@@ -332,15 +332,14 @@
               <h3 class="title is-4">Direct-Fusion (baseline)</h3>
 
               <p>
-                Mainstream VLA systems commonly fuse inherited image-side and
-                instruction-side representations into an action-facing representation
-                before downstream action prediction.
+                Many VLA systems reuse inherited image-side and instruction-side representations relatively directly for
+                action generation, often as conditioning signals to a downstream policy.
               </p>
 
               <p>
-                We use this direct-fusion pattern as a diagnostic abstraction for
-                studying how action supervision acts on inherited multimodal
-                representations.
+                We use direct fusion as a diagnostic abstraction of this broader interface pattern to study how action
+                supervision reshapes inherited multimodal representations without a dedicated action-facing
+                reorganization module.
               </p>
             </div>
           </div>
@@ -400,9 +399,16 @@
               </h3>
 
               <p>
-                Direct fusion and Action QFormer share the same inherited
-                multimodal pathway and downstream action objective, but differ
-                in both forward organization and backward action-loss routing.
+                Forward organization determines how inherited image and instruction representations are assembled into
+                an action-facing representation before policy prediction. Backward shaping describes how gradients from
+                the action objective propagate through this organization and reshape the representations involved during
+                training.
+              </p>
+
+              <p>
+                The figure contrasts two resulting regimes: direct fusion produces direct shaping of the inherited
+                multimodal pathway, whereas Action QFormer introduces a query-mediated interface that enables more
+                structured action-supervised shaping.
               </p>
             </div>
 
@@ -418,14 +424,30 @@
           <div class="column is-four-fifths">
             <div class="content">
               <h3 class="title is-4">
-                Mechanism Animation
+                How the Interface Reshapes Learning
               </h3>
 
               <p>
-                The animation illustrates how Action QFormer changes both the
-                organization of multimodal information during the forward pass
-                and the route through which action supervision propagates
-                during training.
+                The two interfaces differ not only in their computation, but also in how they organize information and
+                absorb action supervision.
+              </p>
+
+              <p>
+                <strong>Forward organization.</strong>
+                In direct fusion, inherited image and instruction representations must simultaneously preserve
+                pretrained multimodal semantics while adapting to action prediction. Action QFormer instead delegates
+                this action-facing organization to a small set of instruction-conditioned queries. After absorbing the
+                instruction, the queries selectively retrieve visual evidence through cross-attention and reorganize
+                distributed multimodal information into a compact action-facing representation.
+              </p>
+
+              <p>
+                <strong>Backward shaping.</strong>
+                The same structural difference also changes how action supervision propagates during training. Instead
+                of requiring the inherited multimodal pathway to directly absorb action-specific adaptation, Action
+                QFormer allows the learnable queries and their cross-attention interactions to absorb much of this
+                reshaping first. The interface therefore becomes the primary site for action-facing adaptation, while
+                upstream multimodal representations receive a more selective training signal.
               </p>
             </div>
 
@@ -448,9 +470,8 @@
           <div class="column">
             <h2 class="title is-3">Mechanistic Findings</h2>
             <p class="subtitle is-5">
-              Three complementary analyses show that Action QFormer makes
-              action-supervised adaptation more controlled and more
-              action-facing.
+              Analyses reveal how Action QFormer reshapes action-facing structure, upstream rewriting,
+              instruction-to-visual attention, and task-relevant visual grounding.
             </p>
           </div>
         </div>
@@ -464,10 +485,9 @@
               </h3>
 
               <p>
-                Action QFormer forms a substantially clearer left–right
-                distinction in the action-facing representation, while the
-                corresponding changes in upstream image-side and
-                instruction-side representations remain much smaller.
+                Action QFormer makes left- and right-turn commands easier to distinguish in the representation used for
+                action prediction. This separation emerges primarily at the action-facing interface, while upstream
+                image and instruction representations change much less.
               </p>
             </div>
           </div>
@@ -493,13 +513,12 @@
           <div class="column is-two-fifths">
             <div class="content">
               <h3 class="title is-4">
-                Reduced Upstream Rewriting
+                Targeted Upstream Rewriting
               </h3>
 
               <p>
-                Action QFormer reduces broad upstream token rewriting while
-                preserving targeted adaptation on selected control-relevant
-                tokens such as directional and motion expressions.
+                Instead of broadly changing inherited language representations, Action QFormer concentrates adaptation
+                on control-relevant tokens, including directional and motion expressions.
               </p>
             </div>
           </div>
@@ -516,10 +535,8 @@
               </h3>
 
               <p>
-                Under action-loss exposure, Action QFormer produces fewer
-                high-risk attention shifts and preserves more stable visual
-                grounding relative to the corresponding action-update-blocked
-                reference.
+                Action QFormer better preserves where instruction tokens look in the visual scene after action training.
+                It produces fewer large attention shifts away from the corresponding action-update-blocked reference.
               </p>
             </div>
           </div>
@@ -549,29 +566,31 @@
               </h3>
 
               <p>
-                Beyond preserving attention stability, Action QFormer can also
-                sharpen instruction-to-visual attention toward task-relevant
-                visual evidence. The example below illustrates this qualitative
-                focus effect for the instruction
+                Action supervision does not only preserve grounding; in some cases, it sharpens attention toward
+                task-relevant visual evidence, such as the staircase referred to by the instruction.
                 <em>“move towards the staircase.”</em>
               </p>
             </div>
           </div>
         </div>
+
+        <p class="has-text-centered is-italic mt-5">
+          See the paper for detailed analysis and full quantitative results.
+        </p>
       </div>
     </section>
 
     <!-- =======================================================
-         Results
+         Real-World Validation
     ======================================================== -->
-    <section class="section hero is-light" id="results">
+    <section class="section hero is-light" id="real-world-validation">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered section-heading">
           <div class="column">
-            <h2 class="title is-3">Results</h2>
+            <h2 class="title is-3">Real-World Validation</h2>
             <p class="subtitle is-5">
-              Action QFormer improves both full closed-loop navigation and
-              controlled instruction-conditioned action generation.
+              We validate Action QFormer through zero-shot sim-to-real closed-loop navigation across diverse real-world
+              scenes.
             </p>
           </div>
         </div>
@@ -953,21 +972,6 @@
       </div>
     </section>
   </main>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8 has-text-centered">
-          <div class="content">
-            <p><strong>Acknowledgments.</strong> This work was supported by the Shanghai Qizhi Institute. The authors
-              thank Jingzhi Cui, Yunfei Li, and Chao Yu for insightful discussions.</p>
-            <p>This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
-                target="_blank">Academic Project Page Template</a>.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
 </body>
 
 </html>
