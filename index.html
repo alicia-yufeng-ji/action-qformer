@@ -312,12 +312,43 @@
           <div class="column">
             <h2 class="title is-3">Action Interface Design</h2>
             <p class="subtitle is-5">
-              We compare a common direct-fusion VLA interface with Action QFormer,
-              which introduces instruction-conditioned learnable queries before
-              action prediction.
+              We compare two ways of connecting inherited multimodal representations
+              to downstream action prediction.
             </p>
           </div>
         </div>
+
+        <hr class="interface-divider">
+
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content interface-motivation">
+              <p class="motivation-eyebrow">
+                Design Motivation
+              </p>
+
+              <p>
+                Action supervision has a dual effect: it helps pretrained multimodal representations support action
+                prediction, but when routed too directly through the inherited pathway, it can also broadly rewrite
+                useful pretrained structure.
+              </p>
+
+              <p>
+                This raises a central interface-design question:
+                <strong>where should action-facing adaptation occur?</strong>
+              </p>
+
+              <p>
+                We study two contrasting designs. Direct fusion places the inherited
+                multimodal pathway in a more direct role in action prediction, whereas
+                Action QFormer introduces a query-mediated interface that provides a
+                dedicated site for action-facing organization and adaptation.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr class="interface-divider">
 
         <!-- Direct-Fusion Baseline -->
         <div class="columns is-vcentered methodology-row">
@@ -470,7 +501,7 @@
           <div class="column">
             <h2 class="title is-3">Mechanistic Findings</h2>
             <p class="subtitle is-5">
-              Analyses reveal how Action QFormer reshapes action-facing structure, upstream rewriting,
+              Analyses reveal how Action QFormer reshapes action-facing representations, upstream rewriting,
               instruction-to-visual attention, and task-relevant visual grounding.
             </p>
           </div>

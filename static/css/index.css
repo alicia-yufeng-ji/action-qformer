@@ -201,7 +201,7 @@ pre {
    ========================================================= */
 
 #main-content .section-heading {
-  max-width: 860px;
+  max-width: 840px;
   margin: 0 auto 3rem;
   text-align: center;
 }
@@ -271,6 +271,24 @@ pre {
   line-height: 1.65;
 }
 
+/* =========================================================
+   Design Motivation
+   ========================================================= */
+
+.motivation-eyebrow {
+  margin: 0 0 1.2rem;
+
+  color: var(--primary-color);
+
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 /* =========================================================
    Publication Header Text
