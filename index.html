@@ -87,8 +87,7 @@
   <link rel="preload" href="static/css/bulma-carousel.min.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style"
-    onload="this.onload=null;this.rel='stylesheet'">
+  <link href="static/css/fontawesome.all.min.css" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
 
@@ -191,12 +190,13 @@
       </button>
 
       <div class="site-nav-links">
-        <a href="#action-interface-design">Design</a>
-        <a href="#mechanism">Mechanism</a>
-        <a href="#analysis">Findings</a>
-        <a href="#real-world-validation">Validation</a>
-        <a href="#BibTeX">Citation</a>
-      </div>
+        <div class="publication-links">
+          <a href="#action-interface-design">Design</a>
+          <a href="#mechanism">Mechanism</a>
+          <a href="#analysis">Findings</a>
+          <a href="#real-world-validation">Validation</a>
+          <a href="#BibTeX">Citation</a>
+        </div>
     </nav>
   </header>
 
@@ -236,31 +236,42 @@
               <div class="column has-text-centered">
                 <div class="publication-links">
                   <span class="link-block">
-                    <a href="static/pdfs/paper.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                    <a href="static/pdfs/paper.pdf" target="_blank" rel="noopener noreferrer"
+                      class="external-link button is-normal is-rounded publication-button">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
                       <span>Paper</span>
                     </a>
                   </span>
+
                   <span class="link-block">
-                    <a href="#video" class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fas fa-play"></i></span>
+                    <a href="https://arxiv.org/abs/YOUR_ARXIV_ID" target="_blank" rel="noopener noreferrer"
+                      class="external-link button is-normal is-rounded publication-button publication-button-primary">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="#video" class="external-link button is-normal is-rounded publication-button">
+                      <span class="icon">
+                        <i class="fas fa-play"></i>
+                      </span>
                       <span>Video</span>
                     </a>
                   </span>
+
                   <span class="link-block">
-                    <a href="https://github.com/YOUR_REPO_HERE" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="fab fa-github"></i></span>
-                      <span>Code</span>
-                    </a>
-                  </span>
-                  <span class="link-block">
-                    <a href="https://arxiv.org/abs/YOUR_ARXIV_ID" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon"><i class="ai ai-arxiv"></i></span>
-                      <span>arXiv</span>
-                    </a>
+                    <span class="button is-normal is-rounded publication-button publication-button-disabled"
+                      aria-disabled="true">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code <span class="coming-soon-text">(coming soon)</span></span>
+                    </span>
                   </span>
                 </div>
               </div>
