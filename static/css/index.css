@@ -173,6 +173,13 @@ pre {
   gap: 1.4rem;
 }
 
+.site-nav-links a:focus,
+.site-nav-links a:active,
+.site-nav-links a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 .site-nav-links a {
   position: relative;
 
@@ -181,6 +188,10 @@ pre {
   font-weight: 650;
   line-height: 1;
   text-decoration: none;
+
+  outline: none;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
 
   transition: color 0.2s ease;
 }
@@ -1444,7 +1455,6 @@ code {
    ========================================================= */
 
 .button:focus,
-a:focus,
 .copy-bibtex-btn:focus,
 .scroll-to-top:focus,
 .more-works-btn:focus {
