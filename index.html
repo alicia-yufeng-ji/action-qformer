@@ -182,12 +182,30 @@
 </head>
 
 <body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a class="site-brand" href="#top">Action QFormer</a>
+
+      <button class="site-nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        Menu
+      </button>
+
+      <div class="site-nav-links">
+        <a href="#action-interface-design">Design</a>
+        <a href="#mechanism">Mechanism</a>
+        <a href="#analysis">Findings</a>
+        <a href="#real-world-validation">Validation</a>
+        <a href="#BibTeX">Citation</a>
+      </div>
+    </nav>
+  </header>
+
   <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
     <i class="fas fa-chevron-up"></i>
   </button>
 
   <main id="main-content">
-    <section class="hero publication-header">
+    <section class="hero publication-header" id="top">
       <div class="hero-body">
         <div class="container is-max-desktop">
           <div class="columns is-centered">
