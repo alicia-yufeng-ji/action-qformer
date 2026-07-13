@@ -236,3 +236,36 @@ window.addEventListener('scroll', updateNavigationAtPageTop);
 window.addEventListener('resize', updateNavigationAtPageTop);
 
 updateNavigationAtPageTop();
+
+// Auto-play cross-scene comparison videos when visible
+const comparisonVideos = document.querySelectorAll(
+    '.comparison-video-card video'
+);
+
+if (
+    comparisonVideos.length > 0 &&
+    'IntersectionObserver' in window
+) {
+    const comparisonVideoObserver = new IntersectionObserver(
+        function (entries) {
+            entries.forEach(function (entry) {
+                const video = entry.target;
+
+                if (entry.isIntersecting) {
+                    video.play().catch(function () {
+                        // Autoplay may be blocked by the browser.
+                    });
+                } else {
+                    video.pause();
+                }
+            });
+        },
+        {
+            threshold: 0.55
+        }
+    );
+
+    comparisonVideos.forEach(function (video) {
+        comparisonVideoObserver.observe(video);
+    });
+}

@@ -748,14 +748,106 @@ pre {
    Cross-Scene Video Cards
    ========================================================= */
 
-#results .card video {
-  border: none;
-  border-radius:
-    calc(var(--border-radius-lg) - 6px);
+#real-world-validation .comparison-video-card {
+  height: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+
+  background: var(--background-primary);
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-#results .card-content>p {
-  color: var(--text-secondary);
+#real-world-validation .comparison-video-card:hover {
+  border-color: #c8d2df;
+
+  box-shadow: var(--shadow-lg);
+
+  transform: translateY(-3px);
+}
+
+#real-world-validation .comparison-video-media {
+  overflow: hidden;
+
+  background: #eef1f5;
+}
+
+#real-world-validation .comparison-video-media video {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: #000000;
+
+  box-shadow: none;
+}
+
+#real-world-validation .comparison-video-info {
+  padding: 1rem 1.1rem 1.15rem;
+
+  text-align: left;
+}
+
+#real-world-validation .comparison-video-tag {
+  display: inline-flex;
+
+  margin-bottom: 0.55rem;
+  padding: 0.25rem 0.55rem;
+
+  border-radius: 999px;
+
+  background: var(--background-accent);
+  color: var(--primary-hover);
+
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+#real-world-validation .comparison-video-title {
+  margin: 0;
+
+  color: var(--text-primary);
+
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+#real-world-validation .comparison-video-card-ours {
+  border: 2px solid rgba(47, 112, 183, 0.7);
+
+  box-shadow:
+    0 10px 28px rgba(47, 112, 183, 0.14);
+}
+
+#real-world-validation .comparison-video-card-ours .comparison-video-info {
+  background: #f2f7fd;
+}
+
+#real-world-validation .comparison-video-card-ours .comparison-video-tag {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+#real-world-validation .comparison-video-card:not(.comparison-video-card-ours) .comparison-video-tag {
+  background: #edf0f4;
+  color: #667085;
 }
 
 
