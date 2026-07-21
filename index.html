@@ -18,8 +18,7 @@
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
-  <!-- TODO: Replace with your institution or lab name -->
-  <meta property="og:site_name" content="INSTITUTION_OR_LAB_NAME">
+  <meta property="og:site_name" content="Action QFormer">
   <meta property="og:title"
     content="Action QFormer | Structured Representation Shaping under Action Supervision in VLA Models">
   <meta property="og:description"
@@ -31,37 +30,29 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt"
     content="Action QFormer: Structured Representation Shaping under Action Supervision in Vision-Language-Action Models">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:published_time" content="2026-07-16T06:59:39Z">
+  <meta property="article:author" content="Yufeng Ji">
   <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
-  <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
-  <meta name="twitter:title"
-    content="Action QFormer | Structured Representation Shaping under Action Supervision in VLA Models">
-  <meta name="twitter:description"
-    content="Action supervision in vision-language-action (VLA) models is often treated as a downstream objective for learning action prediction. In this paper, we study it instead as a force that shapes inherited multimodal representations. We show that this shaping has a dual effect: it is necessary for forming action-compatible representations, but when action supervision is applied too directly to the inherited multimodal pathway, it can also destabilize representations that support language-side processing and object grounding. To address this tension, we introduce Action QFormer, a query-based action-facing interface that uses instruction-conditioned queries to reorganize inherited multimodal information into action-facing representations before downstream action generation. In zero-shot sim-to-real navigation, Action QFormer improves average closed-loop task success from 18.8% to 56.3%, raises fixed-instruction action-generation correctness from 22.5% to 75.5%, and nearly eliminates out-of-distribution instruction generations. Further analyses show that Action QFormer changes how action supervision shapes inherited multimodal representations, reducing broad upstream rewriting while preserving targeted and sometimes constructive action-supervised adaptation. These results suggest that improving VLA performance requires not only stronger pretrained backbones, but also better ways of selecting and organizing inherited multimodal information while controlling how it is shaped under action supervision.">
-  <meta name="twitter:image"
-    content="https://alicia-yufeng-ji.github.io/action-qformer/static/images/social_preview.png">
-  <meta name="twitter:image:alt"
-    content="Action QFormer: Structured Representation Shaping under Action Supervision in Vision-Language-Action Models">
+  <meta property="article:tag" content="vision-language-action models">
+  <meta property="article:tag" content="robot learning">
+  <meta property="article:tag" content="representation learning">
 
   <!-- Academic/Research Specific -->
   <meta name="citation_title"
     content="Action QFormer: Structured Representation Shaping under Action Supervision in Vision-Language-Action Models">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://alicia-yufeng-ji.github.io/action-qformer/static/pdfs/paper.pdf">
+  <meta name="citation_author" content="Ji, Yufeng">
+  <meta name="citation_author" content="Tang, Wenhao">
+  <meta name="citation_author" content="Niu, Haoyi">
+  <meta name="citation_author" content="Sreenath, Koushil">
+  <meta name="citation_author" content="Wu, Yi">
+  <meta name="citation_author" content="Li, Zhongyu">
+  <meta name="citation_publication_date" content="2026/07/16">
+  <meta name="citation_arxiv_id" content="2607.14635">
+  <meta name="citation_pdf_url"
+    content="https://alicia-yufeng-ji.github.io/action-qformer/static/pdfs/action_qformer.pdf">
 
   <!-- Additional SEO -->
+  <link rel="canonical" href="https://alicia-yufeng-ji.github.io/action-qformer/">
   <meta name="theme-color" content="#2563eb">
   <meta name="msapplication-TileColor" content="#2563eb">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -117,66 +108,67 @@
   {
     "@context": "https://schema.org",
     "@type": "ScholarlyArticle",
-    "headline": "Action QFormer | Structured Representation Shaping under Action Supervision in VLA Models",
+    "headline": "Action QFormer: Structured Representation Shaping under Action Supervision in Vision-Language-Action Models",
     "description": "Action supervision in vision-language-action (VLA) models is often treated as a downstream objective for learning action prediction. In this paper, we study it instead as a force that shapes inherited multimodal representations. We show that this shaping has a dual effect: it is necessary for forming action-compatible representations, but when action supervision is applied too directly to the inherited multimodal pathway, it can also destabilize representations that support language-side processing and object grounding. To address this tension, we introduce Action QFormer, a query-based action-facing interface that uses instruction-conditioned queries to reorganize inherited multimodal information into action-facing representations before downstream action generation. In zero-shot sim-to-real navigation, Action QFormer improves average closed-loop task success from 18.8% to 56.3%, raises fixed-instruction action-generation correctness from 22.5% to 75.5%, and nearly eliminates out-of-distribution instruction generations. Further analyses show that Action QFormer changes how action supervision shapes inherited multimodal representations, reducing broad upstream rewriting while preserving targeted and sometimes constructive action-supervised adaptation. These results suggest that improving VLA performance requires not only stronger pretrained backbones, but also better ways of selecting and organizing inherited multimodal information while controlling how it is shaped under action supervision.",
     "author": [
       {
         "@type": "Person",
-        "name": "FIRST_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
+        "name": "Yufeng Ji",
+        "affiliation": [
+          {"@type": "Organization", "name": "The Chinese University of Hong Kong"},
+          {"@type": "Organization", "name": "Shanghai Qizhi Institute"},
+          {"@type": "Organization", "name": "Hong Kong Embodied AI Lab"}
+        ]
       },
       {
         "@type": "Person",
-        "name": "SECOND_AUTHOR_NAME",
-        "affiliation": {
-          "@type": "Organization",
-          "name": "INSTITUTION_NAME"
-        }
+        "name": "Wenhao Tang",
+        "affiliation": {"@type": "Organization", "name": "Tsinghua University"}
+      },
+      {
+        "@type": "Person",
+        "name": "Haoyi Niu",
+        "affiliation": {"@type": "Organization", "name": "University of California, Berkeley"}
+      },
+      {
+        "@type": "Person",
+        "name": "Koushil Sreenath",
+        "affiliation": {"@type": "Organization", "name": "University of California, Berkeley"}
+      },
+      {
+        "@type": "Person",
+        "name": "Yi Wu",
+        "affiliation": {"@type": "Organization", "name": "Tsinghua University"}
+      },
+      {
+        "@type": "Person",
+        "name": "Zhongyu Li",
+        "affiliation": [
+          {"@type": "Organization", "name": "Hong Kong Embodied AI Lab"},
+          {"@type": "Organization", "name": "The Chinese University of Hong Kong"}
+        ]
       }
     ],
-    "datePublished": "2024-01-01",
-    "publisher": {
-      "@type": "Organization",
-      "name": "CONFERENCE_OR_JOURNAL_NAME"
-    },
-    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
-    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
-    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
-    "abstract": "FULL_ABSTRACT_TEXT_HERE",
-    "citation": "BIBTEX_CITATION_HERE",
+    "datePublished": "2026-07-16",
+    "url": "https://alicia-yufeng-ji.github.io/action-qformer/",
+    "image": "https://alicia-yufeng-ji.github.io/action-qformer/static/images/social_preview.png",
+    "keywords": ["vision-language-action models", "robot learning", "representation learning", "action supervision", "QFormer", "sim-to-real navigation"],
+    "abstract": "Action supervision in vision-language-action (VLA) models is often treated as a downstream objective for learning action prediction. In this paper, we study it instead as a force that shapes inherited multimodal representations. We show that this shaping has a dual effect: it is necessary for forming action-compatible representations, but when action supervision is applied too directly to the inherited multimodal pathway, it can also destabilize representations that support language-side processing and object grounding. To address this tension, we introduce Action QFormer, a query-based action-facing interface that uses instruction-conditioned queries to reorganize inherited multimodal information into action-facing representations before downstream action generation. In zero-shot sim-to-real navigation, Action QFormer improves average closed-loop task success from 18.8% to 56.3%, raises fixed-instruction action-generation correctness from 22.5% to 75.5%, and nearly eliminates out-of-distribution instruction generations. Further analyses show that Action QFormer changes how action supervision shapes inherited multimodal representations, reducing broad upstream rewriting while preserving targeted and sometimes constructive action-supervised adaptation.",
+    "citation": "https://arxiv.org/abs/2607.14635",
     "isAccessibleForFree": true,
-    "license": "https://creativecommons.org/licenses/by/4.0/",
     "mainEntity": {
       "@type": "WebPage",
-      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+      "@id": "https://alicia-yufeng-ji.github.io/action-qformer/"
     },
     "about": [
       {
         "@type": "Thing",
-        "name": "RESEARCH_AREA_1"
+        "name": "Vision-language-action models"
       },
       {
         "@type": "Thing", 
-        "name": "RESEARCH_AREA_2"
+        "name": "Robot learning"
       }
-    ]
-  }
-  </script>
-
-  <!-- Website/Organization Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "INSTITUTION_OR_LAB_NAME",
-    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
-    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
-    "sameAs": [
-      "https://twitter.com/YOUR_TWITTER_HANDLE",
-      "https://github.com/YOUR_GITHUB_USERNAME"
     ]
   }
   </script>
@@ -197,6 +189,7 @@
         <a href="#analysis">Findings</a>
         <a href="#real-world-validation">Validation</a>
         <a href="#BibTeX">Citation</a>
+      </div>
     </nav>
   </header>
 
@@ -249,7 +242,7 @@
               <div class="column has-text-centered">
                 <div class="publication-links">
                   <span class="link-block">
-                    <a href="static/pdfs/paper.pdf" target="_blank" rel="noopener noreferrer"
+                    <a href="static/pdfs/action_qformer.pdf" target="_blank" rel="noopener noreferrer"
                       class="external-link button is-normal is-rounded publication-button">
                       <span class="icon">
                         <i class="fas fa-file-pdf"></i>
@@ -1099,7 +1092,11 @@
         <pre id="bibtex-code"><code>@article{ji2026actionqformer,
   title={Action QFormer: Structured Representation Shaping under Action Supervision in Vision-Language-Action Models},
   author={Ji, Yufeng and Tang, Wenhao and Niu, Haoyi and Sreenath, Koushil and Wu, Yi and Li, Zhongyu},
-  year={2026}
+  year={2026},
+  eprint={2607.14635},
+  archivePrefix={arXiv},
+  primaryClass={cs.AI},
+  url={https://arxiv.org/abs/2607.14635}
 }</code></pre>
 
         <figure class="acknowledgement-card mt-6">
